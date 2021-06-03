@@ -4,13 +4,11 @@ import numpy as np
 
 
 # Server socket
-HOST = '192.168.43.46'
 PORT = 50500
-
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print('Socket created')
 
-s.bind(('192.168.43.46',50500))
+s.bind(('127.0.0.1',PORT))
 print('Socket bind complete')
 
 s.listen(10)
