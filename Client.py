@@ -4,7 +4,7 @@ import numpy as np
 
 
 # Server socket
-HOST = '192.168.43.188'
+HOST = '127.0.0.1'
 PORT = 50500
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
