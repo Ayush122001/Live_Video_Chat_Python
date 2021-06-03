@@ -26,10 +26,7 @@ conn, addr = s.accept()
 
 
 capture = cv2.VideoCapture(1)
-#sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-#sock.connect(('192.168.43.46', 50500))
-
-
+model = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 while True:
     ret, frame = capture.read()
@@ -41,7 +38,14 @@ while True:
     if type(frame) is type(None):
         pass
     else:
-        cv2.imshow('frame', frame)
+        face = model.detectMultiScale(frame)
+        if len(face) !=0 :
+            x1 = face[0][0]
+            y1 = face[0][1]
+            x2 = x1 + face[0][2]
+            y2 = y1 + face[0][3]
+            frame = cv2.rectangle(frame,(x1,y1),(x2,y2),[255,0,0],4)
+        cv2.imshow('Windows', frame)
         if cv2.waitKey(10) == 13:
             break
 cv2.destroyAllWindows()
